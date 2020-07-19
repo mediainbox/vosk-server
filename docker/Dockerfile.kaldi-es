@@ -8,6 +8,13 @@ RUN mkdir /opt/vosk-model-es \
    && mv vosk-model-small-es-${MODEL_VERSION} model \
    && rm -rf vosk-model-small-es-${MODEL_VERSION}.zip
 
+RUN mkdir -p /opt/vosk-model-es \
+   && cd /opt/vosk-model-es \
+   && wget -q https://alphacephei.com/vosk/models/vosk-model-spk-${MODEL_VERSION}.zip \
+   && unzip vosk-model-spk-${MODEL_VERSION}.zip \
+   && mv vosk-model-spk-${MODEL_VERSION} model-spk \
+   && rm -rf vosk-model-spk-${MODEL_VERSION}.zip
+
 EXPOSE 2700
 WORKDIR /opt/vosk-server/websocket
 CMD [ "python3", "./asr_server.py", "/opt/vosk-model-es/model" ]

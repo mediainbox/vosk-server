@@ -20,7 +20,7 @@ vosk_interface = os.environ.get('VOSK_SERVER_INTERFACE', '0.0.0.0')
 vosk_port = int(os.environ.get('VOSK_SERVER_PORT', 2700))
 vosk_model_path = os.environ.get('VOSK_MODEL_PATH', 'model')
 vosk_sample_rate = float(os.environ.get('VOSK_SAMPLE_RATE', 8000))
-spk_model_path = os.environ.get('VOSK_SPK_PATH', 'model-spk')
+spk_model_path = os.environ.get('VOSK_SPK_PATH', '/opt/vosk-model-es/model-spk')
 
 if len(sys.argv) > 1:
    vosk_model_path = sys.argv[1]

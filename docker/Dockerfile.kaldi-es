@@ -15,6 +15,9 @@ RUN mkdir -p /opt/vosk-model-es \
    && mv vosk-model-spk-${MODEL_VERSION} model-spk \
    && rm -rf vosk-model-spk-${MODEL_VERSION}.zip
 
+WORKDIR /opt/vosk-server/websocket
+COPY asr_server.py .
+
 EXPOSE 2700
 WORKDIR /opt/vosk-server/websocket
 CMD [ "python3", "./asr_server.py", "/opt/vosk-model-es/model" ]
